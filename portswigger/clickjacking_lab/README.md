@@ -1,4 +1,4 @@
-# Clickjacking — PortSwigger Labs
+# Clickjacking _ PortSwigger Labs
 
 > **UI Redressing** · **CSRF bypass** · **Frame busting** · **DOM XSS chaining**
 
@@ -8,11 +8,11 @@
 
 | Nível | Lab |
 |---|---|
-| 🟢 Apprentice | [Basic clickjacking with CSRF token protection](#lab-1-basic-clickjacking-with-csrf-token-protection) |
-| 🟢 Apprentice | [Clickjacking with form input data prefilled from a URL parameter](#lab-2-clickjacking-with-form-input-prefilled-from-url-parameter) |
-| 🟢 Apprentice | [Clickjacking with a frame buster script](#lab-3-clickjacking-with-a-frame-buster-script) |
-| 🟡 Practitioner | [Exploiting clickjacking vulnerability to trigger DOM-based XSS](#lab-4-exploiting-clickjacking-to-trigger-dom-based-xss) |
-| 🟡 Practitioner | [Multistep clickjacking](#lab-5-multistep-clickjacking) |
+|  Apprentice | [Basic clickjacking with CSRF token protection](#lab-1-basic-clickjacking-with-csrf-token-protection) |
+|  Apprentice | [Clickjacking with form input data prefilled from a URL parameter](#lab-2-clickjacking-with-form-input-prefilled-from-url-parameter) |
+|  Apprentice | [Clickjacking with a frame buster script](#lab-3-clickjacking-with-a-frame-buster-script) |
+|  Practitioner | [Exploiting clickjacking vulnerability to trigger DOM-based XSS](#lab-4-exploiting-clickjacking-to-trigger-dom-based-xss) |
+|  Practitioner | [Multistep clickjacking](#lab-5-multistep-clickjacking) |
 
 ---
 
@@ -22,7 +22,7 @@
 
 Clickjacking (também chamado *UI Redressing*) é um ataque onde a vítima é enganada a clicar num elemento invisível de uma página legítima, ao sobrepor um `<iframe>` transparente sobre uma interface decoy visível.
 
-Ao contrário do CSRF, o clique é **genuíno** — o browser considera-o legítimo porque o utilizador clicou de facto. O ataque explora a **confiança visual**, não a autenticação.
+Ao contrário do CSRF, o clique é **genuíno** _ o browser considera-o legítimo porque o utilizador clicou de facto. O ataque explora a **confiança visual**, não a autenticação.
 
 ```
 ┌──────────────────────────────────────┐
@@ -51,7 +51,7 @@ Ao contrário do CSRF, o clique é **genuíno** — o browser considera-o legít
     position: relative;
     width: 800px;
     height: 600px;
-    opacity: 0.0001;   /* NUNCA 0 — tem de ser renderizado para ser clicável */
+    opacity: 0.0001;   /* NUNCA 0 _ tem de ser renderizado para ser clicável */
     z-index: 2;        /* POR CIMA do decoy */
 }
 
@@ -114,15 +114,15 @@ Clickjacking bypass:
 
 | Defesa | Como funciona | Contorna Clickjacking? |
 |---|---|---|
-| `X-Frame-Options: DENY` | Browser recusa renderizar em iframe | ✅ Sim |
-| `X-Frame-Options: SAMEORIGIN` | Só permite iframes do mesmo domínio | ✅ Sim |
-| `Content-Security-Policy: frame-ancestors 'none'` | Substituto moderno do X-Frame-Options | ✅ Sim |
-| CSRF tokens | Valida origem dos pedidos | ❌ Não |
-| Frame buster scripts (JS) | JS tenta sair do iframe | ⚠️ Bypassável via `sandbox` |
+| `X-Frame-Options: DENY` | Browser recusa renderizar em iframe |  Sim |
+| `X-Frame-Options: SAMEORIGIN` | Só permite iframes do mesmo domínio |  Sim |
+| `Content-Security-Policy: frame-ancestors 'none'` | Substituto moderno do X-Frame-Options |  Sim |
+| CSRF tokens | Valida origem dos pedidos |  Não |
+| Frame buster scripts (JS) | JS tenta sair do iframe |  Bypassável via `sandbox` |
 
 ---
 
-### Frame Buster Scripts — e como contorná-los
+### Frame Buster Scripts _ e como contorná-los
 
 ```javascript
 // Defesa típica (frame buster):
